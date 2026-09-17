@@ -1,0 +1,12 @@
+{
+  "transaction": {
+    "transactionNo": "900001",
+    "reservationId": "resv-10001",
+    "folioId": "folio-1",
+    "amount": "120.00",
+    "currencyCode": "EUR",
+    "transactionCode": "ROOM",
+    "lastModifyDateTime": "2026-08-17T14:11:20Z",
+    "postingDate": "2026-08-17"
+  }
+}

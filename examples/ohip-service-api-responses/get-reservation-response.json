@@ -1,0 +1,25 @@
+{
+  "reservation": {
+    "reservationIdList": [
+      {
+        "type": "Reservation",
+        "id": "resv-10001"
+      }
+    ],
+    "confirmationNo": "CNF10001",
+    "arrivalDate": "2026-09-02",
+    "departureDate": "2026-09-05",
+    "reservationStatus": "RESERVED",
+    "lastModifyDateTime": "2026-08-17T10:16:10Z",
+    "roomStay": {
+      "roomType": "DLX",
+      "ratePlanCode": "BAR"
+    },
+    "profileIdList": [
+      {
+        "type": "Profile",
+        "id": "p-9001"
+      }
+    ]
+  }
+}

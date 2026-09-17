@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "offset": "100001",
+    "uniqueEventId": "evt-reservation-new-100001"
+  },
+  "chainCode": "CHAIN",
+  "hotelId": "MAD01",
+  "moduleName": "Reservation",
+  "eventName": "NewReservation",
+  "primaryKey": "resv-10001",
+  "timestamp": "2026-08-17T09:00:00Z",
+  "publisherId": "OPERA",
+  "actionInstanceId": "act-resv-new-10001",
+  "detail": [
+    {
+      "elementName": "reservationId",
+      "newValue": "resv-10001",
+      "elementType": "TEXT",
+      "elementRole": "IDENTIFIER",
+      "elementSequence": 1
+    },
+    {
+      "elementName": "confirmationNo",
+      "newValue": "CNF10001",
+      "elementType": "TEXT",
+      "elementRole": "REFERENCE",
+      "elementSequence": 2
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "folios": [
+    {
+      "folioId": "folio-1",
+      "folioNo": "101",
+      "balance": "248.50",
+      "currencyCode": "EUR",
+      "lastModifyDateTime": "2026-08-17T13:05:00Z",
+      "windowNo": "1"
+    }
+  ]
+}

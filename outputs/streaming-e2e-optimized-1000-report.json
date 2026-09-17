@@ -1,0 +1,126 @@
+{
+  "batches": {
+    "avg_size": 333.33,
+    "count": 3,
+    "max_size": 504,
+    "min_size": 242
+  },
+  "infrastructure_usage": {
+    "cpu_percent": {
+      "avg": 19.92,
+      "max": 21.51
+    },
+    "disk_percent": {
+      "avg": 5.45,
+      "max": 5.45
+    },
+    "memory_percent": {
+      "avg": 82.23,
+      "max": 82.34
+    },
+    "samples": 3
+  },
+  "input": {
+    "max_batch_size": 1000,
+    "max_seconds": 0.1,
+    "min_batch_size": 100,
+    "min_seconds": 0.1,
+    "realtime": false,
+    "seed": 7,
+    "total_messages": 1000
+  },
+  "optimization": {
+    "db_batch_size": 100,
+    "message_group_partitions": 32,
+    "sqs_batch_size": 10,
+    "worker_concurrency": 4,
+    "worker_count": 8
+  },
+  "pipeline": {
+    "analytics_snapshot": {
+      "avg_ms": 836.521787,
+      "count": 1,
+      "max_ms": 836.521787,
+      "p50_ms": 836.521787,
+      "p95_ms": 836.521787,
+      "p99_ms": 836.521787,
+      "total_ms": 836.522
+    },
+    "db_batch_persist": {
+      "avg_ms": 31.467119,
+      "count": 1000,
+      "max_ms": 118.977849,
+      "p50_ms": 29.837689,
+      "p95_ms": 48.458122,
+      "p99_ms": 51.100114,
+      "total_ms": 31467.119
+    },
+    "enrich_persist": {
+      "avg_ms": 0,
+      "count": 0,
+      "p50_ms": 0,
+      "p95_ms": 0,
+      "p99_ms": 0,
+      "total_ms": 0
+    },
+    "enrich_transform": {
+      "avg_ms": 0.021023,
+      "count": 1000,
+      "max_ms": 0.151111,
+      "p50_ms": 0.014936,
+      "p95_ms": 0.059456,
+      "p99_ms": 0.082755,
+      "total_ms": 21.023
+    },
+    "sqs_delete": {
+      "avg_ms": 2.369209,
+      "count": 1000,
+      "max_ms": 18.087846,
+      "p50_ms": 2.076298,
+      "p95_ms": 4.802887,
+      "p99_ms": 7.116677,
+      "total_ms": 2369.209
+    },
+    "sqs_publish": {
+      "avg_ms": 0.444767,
+      "count": 1000,
+      "max_ms": 3.221154,
+      "p50_ms": 0.381315,
+      "p95_ms": 0.616135,
+      "p99_ms": 1.389744,
+      "total_ms": 444.767
+    },
+    "sqs_receive": {
+      "avg_ms": 8.662229,
+      "count": 1000,
+      "max_ms": 24.54757,
+      "p50_ms": 5.943082,
+      "p95_ms": 22.541819,
+      "p99_ms": 24.053593,
+      "total_ms": 8662.229
+    },
+    "stream_extract": {
+      "avg_ms": 0.000425,
+      "count": 1000,
+      "max_ms": 0.003317,
+      "p50_ms": 0.000226,
+      "p95_ms": 0.002033,
+      "p99_ms": 0.002363,
+      "total_ms": 0.425
+    }
+  },
+  "storage": {
+    "core_reservations": 1000,
+    "daily_snapshot_rows": 3000,
+    "database_size_mb": 11.77,
+    "events_completed": 1000,
+    "last_status_rows": 1000,
+    "raw_snapshots": 1000
+  },
+  "summary": {
+    "elapsed_seconds": 7.481,
+    "processed_messages": 1000,
+    "target_stream_seconds": 0.1,
+    "throughput_messages_per_second": 133.66
+  }
+}

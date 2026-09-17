@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "offset": "100005",
+    "uniqueEventId": "evt-cashiering-folio-100005"
+  },
+  "chainCode": "CHAIN",
+  "hotelId": "MAD01",
+  "moduleName": "Cashiering",
+  "eventName": "Folio",
+  "primaryKey": "folio-30001",
+  "timestamp": "2026-08-17T13:45:00Z",
+  "publisherId": "OPERA",
+  "actionInstanceId": "act-folio-30001",
+  "detail": [
+    {
+      "elementName": "reservationId",
+      "newValue": "resv-10001",
+      "elementType": "TEXT",
+      "elementRole": "IDENTIFIER",
+      "elementSequence": 1
+    },
+    {
+      "elementName": "folioNo",
+      "newValue": "1",
+      "elementType": "NUMBER",
+      "elementRole": "REFERENCE",
+      "elementSequence": 2
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "offset": "100003",
+    "uniqueEventId": "evt-reservation-cancel-100003"
+  },
+  "chainCode": "CHAIN",
+  "hotelId": "MAD01",
+  "moduleName": "Reservation",
+  "eventName": "CancelReservation",
+  "primaryKey": "resv-10002",
+  "timestamp": "2026-08-17T11:00:00Z",
+  "publisherId": "OPERA",
+  "actionInstanceId": "act-resv-cancel-10002",
+  "detail": [
+    {
+      "elementName": "reservationId",
+      "oldValue": "resv-10002",
+      "newValue": "resv-10002",
+      "elementType": "TEXT",
+      "elementRole": "IDENTIFIER",
+      "elementSequence": 1
+    },
+    {
+      "elementName": "reservationStatus",
+      "oldValue": "RESERVED",
+      "newValue": "CANCELLED",
+      "elementType": "TEXT",
+      "elementRole": "STATUS",
+      "elementSequence": 2
+    }
+  ]
+}

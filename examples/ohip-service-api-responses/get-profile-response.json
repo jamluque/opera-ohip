@@ -1,0 +1,23 @@
+{
+  "profile": {
+    "profileId": "p-9001",
+    "profileType": "GUEST",
+    "customer": {
+      "personName": [
+        {
+          "givenName": "Lucia",
+          "surname": "Martin",
+          "nameType": "PRIMARY"
+        }
+      ]
+    },
+    "emails": [
+      {
+        "email": "lucia.martin@example.invalid",
+        "type": "EMAIL",
+        "primary": true
+      }
+    ],
+    "lastModifyDateTime": "2026-08-17T11:21:30Z"
+  }
+}

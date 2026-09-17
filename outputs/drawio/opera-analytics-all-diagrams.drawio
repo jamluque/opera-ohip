@@ -1,0 +1,481 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" modified="2026-08-11T12:15:39.843160+00:00" agent="Codex" version="24.7.17" type="device">
+  <diagram id="page-30" name="Arquitectura Last Status">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1050" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="text-2" value="Arquitectura actualizada OPERA Cloud Analytics" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Segoe UI;fontSize=26;fontStyle=1;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1620" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="text-3" value="Streaming OHIP, SQS, enrichment, raw/core, snapshots, pickups y last status" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Segoe UI;fontSize=14;fontStyle=0;fontColor=#5f6b7a;" vertex="1" parent="1">
+          <mxGeometry x="42" y="82" width="1616" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="node-4" value="&lt;b&gt;OPERA Cloud&lt;/b&gt;&lt;br/&gt;Business Events&lt;br/&gt;reservas / folios / perfiles" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#2563ad;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="40" y="180" width="190" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="node-5" value="&lt;b&gt;OHIP Streaming&lt;/b&gt;&lt;br/&gt;WebSocket GraphQL&lt;br/&gt;OAuth + app key" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#6d5bd0;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="280" y="180" width="190" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="node-6" value="&lt;b&gt;ECS Listener&lt;/b&gt;&lt;br/&gt;heartbeat&lt;br/&gt;reconexion&lt;br/&gt;offsets S3" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#168064;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="520" y="180" width="190" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="node-7" value="&lt;b&gt;SQS FIFO + DLQ&lt;/b&gt;&lt;br/&gt;orden&lt;br/&gt;buffer&lt;br/&gt;reintentos" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#d97706;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="760" y="180" width="190" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="node-8" value="&lt;b&gt;ECS Enricher&lt;/b&gt;&lt;br/&gt;OHIP APIs&lt;br/&gt;normaliza recursos" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#168064;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="180" width="210" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="node-9" value="&lt;b&gt;Aurora + S3&lt;/b&gt;&lt;br/&gt;core SQL&lt;br/&gt;raw JSON&lt;br/&gt;idempotencia" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#0f766e;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="1270" y="180" width="210" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="node-10" value="&lt;b&gt;EventBridge&lt;/b&gt;&lt;br/&gt;schedule diario" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#d97706;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="330" y="450" width="210" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="node-11" value="&lt;b&gt;ECS Analytics Job&lt;/b&gt;&lt;br/&gt;snapshot&lt;br/&gt;last status&lt;br/&gt;pickups" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#168064;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="610" y="450" width="230" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="node-12" value="&lt;b&gt;reservation_daily_snapshot&lt;/b&gt;&lt;br/&gt;reserva + stay_date&lt;br/&gt;base pickups" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#2563ad;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="930" y="395" width="250" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="node-13" value="&lt;b&gt;reservation_last_status_daily&lt;/b&gt;&lt;br/&gt;reserva unica&lt;br/&gt;incluye CANCELLED/NO_SHOW" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#b42318;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="930" y="555" width="250" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="node-14" value="&lt;b&gt;pickup_metric&lt;/b&gt;&lt;br/&gt;1, 3, 7, 15 dias&lt;br/&gt;rooms / revenue / ADR" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#6d5bd0;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="1270" y="395" width="230" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="node-15" value="&lt;b&gt;BI / Negocio&lt;/b&gt;&lt;br/&gt;dashboards&lt;br/&gt;queries estables" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#2563ad;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="1270" y="555" width="230" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-16" value="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-4" target="node-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-17" value="2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-5" target="node-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-18" value="3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-6" target="node-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-19" value="4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-7" target="node-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-20" value="5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-8" target="node-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-21" value="6 lee core/raw" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0f766e;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-9" target="node-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-22" value="schedule" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d97706;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-10" target="node-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-23" value="7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563ad;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-11" target="node-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-24" value="8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#b42318;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-11" target="node-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-25" value="9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6d5bd0;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-12" target="node-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-26" value="last status" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563ad;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-13" target="node-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-27" value="pickups" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563ad;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-14" target="node-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node-28" value="&lt;b&gt;Regla clave&lt;/b&gt;&lt;br/&gt;Last status no filtra canceladas ni no-show.&lt;br/&gt;Pickups compara snapshots entre fechas." style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#fff7ed;strokeColor=#d97706;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=16;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="80" y="800" width="1450" height="110" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page-20" name="Vista Funcional">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="text-2" value="Vista funcional para negocio" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Segoe UI;fontSize=26;fontStyle=1;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1520" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="text-3" value="Tres salidas analiticas separadas sobre el dato PMS gobernado en AWS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Segoe UI;fontSize=14;fontStyle=0;fontColor=#5f6b7a;" vertex="1" parent="1">
+          <mxGeometry x="42" y="82" width="1516" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="node-4" value="&lt;b&gt;Dato PMS procesado y gobernado&lt;/b&gt;&lt;br/&gt;Eventos OHIP convertidos en modelo analitico propio&lt;br/&gt;sin consultas directas al PMS" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#edf7f4;strokeColor=#168064;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=17;fontStyle=1;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="170" y="155" width="1180" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="node-5" value="&lt;b&gt;Last Status&lt;/b&gt;&lt;br/&gt;En que estado esta cada reserva hoy?&lt;br/&gt;Granularidad: reserva unica&lt;br/&gt;Incluye CANCELLED y NO_SHOW" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#b42318;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="90" y="390" width="390" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="node-6" value="&lt;b&gt;Pickups&lt;/b&gt;&lt;br/&gt;Que cambio vs 1/3/7/15 dias?&lt;br/&gt;Granularidad: reserva + stay_date&lt;br/&gt;Rooms, revenue, ADR" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#6d5bd0;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="590" y="390" width="390" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="node-7" value="&lt;b&gt;Rooms / Revenue OTB&lt;/b&gt;&lt;br/&gt;Cuanto tenemos vendido a futuro?&lt;br/&gt;Hotel, stay_date y segmento&lt;br/&gt;Mercado, canal, source" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#2563ad;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="390" width="390" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="node-8" value="&lt;b&gt;Operaciones&lt;/b&gt;&lt;br/&gt;llegadas&lt;br/&gt;in-house&lt;br/&gt;checked-out" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="150" y="760" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="node-9" value="&lt;b&gt;Revenue&lt;/b&gt;&lt;br/&gt;pickups&lt;br/&gt;ADR&lt;br/&gt;forecast base" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="490" y="760" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="node-10" value="&lt;b&gt;Direccion&lt;/b&gt;&lt;br/&gt;resumen por hotel&lt;br/&gt;estado" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="830" y="760" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="node-11" value="&lt;b&gt;BI / Data&lt;/b&gt;&lt;br/&gt;dashboards&lt;br/&gt;SQL estable" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="760" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-4" target="node-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-4" target="node-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-4" target="node-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#b42318;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-5" target="node-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6d5bd0;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-6" target="node-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563ad;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-5" target="node-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563ad;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-7" target="node-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page-19" name="Flujo Diario Analytics">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="text-2" value="Flujo diario actualizado de analytics-snapshot-job" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Segoe UI;fontSize=26;fontStyle=1;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1520" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="text-3" value="El mismo job materializa snapshots por noche, last status por reserva y pickups comparativos" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Segoe UI;fontSize=14;fontStyle=0;fontColor=#5f6b7a;" vertex="1" parent="1">
+          <mxGeometry x="42" y="82" width="1516" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="node-4" value="&lt;b&gt;1. Cierre / fecha informe&lt;/b&gt;&lt;br/&gt;snapshot_date = fecha de ejecucion del informe" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#d97706;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="240" y="155" width="1050" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="node-5" value="&lt;b&gt;2. Leer estado curado&lt;/b&gt;&lt;br/&gt;Aurora opera_core.reservation + ultimo raw snapshot" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#0f766e;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="240" y="270" width="1050" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-4" target="node-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node-7" value="&lt;b&gt;3. Expandir por estancia&lt;/b&gt;&lt;br/&gt;una fila por reserva y stay_date futura" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#2563ad;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="240" y="385" width="1050" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-5" target="node-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node-9" value="&lt;b&gt;4. Guardar snapshot diario&lt;/b&gt;&lt;br/&gt;reservation_daily_snapshot estable" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#2563ad;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="240" y="500" width="1050" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-7" target="node-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node-11" value="&lt;b&gt;5. Compactar reserva unica&lt;/b&gt;&lt;br/&gt;reservation_last_status_daily toma ultimo estado" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#b42318;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="240" y="615" width="1050" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-9" target="node-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node-13" value="&lt;b&gt;6. Calcular pickups&lt;/b&gt;&lt;br/&gt;pickup_metric compara 1/3/7/15 dias" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#6d5bd0;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="240" y="730" width="1050" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-11" target="node-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node-15" value="&lt;b&gt;7. Consumir en BI&lt;/b&gt;&lt;br/&gt;dashboards leen tablas materializadas" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#168064;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="240" y="845" width="1050" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-13" target="node-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node-17" value="&lt;b&gt;Regla funcional&lt;/b&gt;&lt;br/&gt;Last status no filtra canceladas ni no-show.&lt;br/&gt;Pickups conserva la comparativa entre fechas." style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#fff7ed;strokeColor=#d97706;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="250" y="950" width="1030" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page-48" name="Infraestructura y Flujos">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1450" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="text-2" value="Arquitectura de infraestructura y flujos" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Segoe UI;fontSize=26;fontStyle=1;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="text-3" value="VPC, ECS, SQS, S3, Aurora, seguridad, observabilidad y analytics" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Segoe UI;fontSize=14;fontStyle=0;fontColor=#5f6b7a;" vertex="1" parent="1">
+          <mxGeometry x="42" y="82" width="2116" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="container-4" value="Oracle Hospitality" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;spacing=12;fillColor=#ffffff;strokeColor=#475569;strokeWidth=3;fontFamily=Segoe UI;fontSize=20;fontStyle=1;align=left;verticalAlign=top;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="40" y="160" width="300" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="node-5" value="&lt;b&gt;OPERA Cloud PMS&lt;/b&gt;&lt;br/&gt;Business Events" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#2563ad;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="75" y="245" width="230" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="node-6" value="&lt;b&gt;OHIP&lt;/b&gt;&lt;br/&gt;OAuth&lt;br/&gt;Streaming + Property APIs" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#6d5bd0;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="75" y="355" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6d5bd0;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-5" target="node-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="container-8" value="AWS Account / Region - VPC multi-AZ" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;spacing=12;fillColor=#eef6ff;strokeColor=#2563ad;strokeWidth=3;fontFamily=Segoe UI;fontSize=20;fontStyle=1;align=left;verticalAlign=top;fontColor=#2563ad;" vertex="1" parent="1">
+          <mxGeometry x="400" y="160" width="1710" height="900" as="geometry" />
+        </mxCell>
+        <mxCell id="container-9" value="Subredes publicas" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;spacing=12;fillColor=#fff7ed;strokeColor=#d97706;strokeWidth=3;fontFamily=Segoe UI;fontSize=20;fontStyle=1;align=left;verticalAlign=top;fontColor=#d97706;" vertex="1" parent="1">
+          <mxGeometry x="440" y="245" width="1580" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="node-10" value="&lt;b&gt;Internet Gateway&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#d97706;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="500" y="300" width="210" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="node-11" value="&lt;b&gt;NAT Gateway&lt;/b&gt;&lt;br/&gt;salida a OHIP" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#d97706;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="785" y="300" width="210" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="node-12" value="&lt;b&gt;Route Tables&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#d97706;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="300" width="210" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="container-13" value="Subredes privadas ECS" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;spacing=12;fillColor=#edf7f4;strokeColor=#168064;strokeWidth=3;fontFamily=Segoe UI;fontSize=20;fontStyle=1;align=left;verticalAlign=top;fontColor=#168064;" vertex="1" parent="1">
+          <mxGeometry x="440" y="430" width="1580" height="275" as="geometry" />
+        </mxCell>
+        <mxCell id="node-14" value="&lt;b&gt;ECS Listener&lt;/b&gt;&lt;br/&gt;WebSocket&lt;br/&gt;offsets" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#168064;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="500" y="520" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="node-15" value="&lt;b&gt;SQS FIFO&lt;/b&gt;&lt;br/&gt;dedupe&lt;br/&gt;ordering" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#d97706;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="785" y="520" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="node-16" value="&lt;b&gt;ECS Enricher&lt;/b&gt;&lt;br/&gt;OHIP APIs&lt;br/&gt;upsert" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#168064;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="520" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="node-17" value="&lt;b&gt;SQS DLQ&lt;/b&gt;&lt;br/&gt;errores" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#b42318;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="1355" y="520" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="node-18" value="&lt;b&gt;ECS Analytics Job&lt;/b&gt;&lt;br/&gt;snapshots&lt;br/&gt;last status&lt;br/&gt;pickups" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#168064;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="1640" y="520" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="container-19" value="Capa de datos" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;spacing=12;fillColor=#f5f3ff;strokeColor=#0f766e;strokeWidth=3;fontFamily=Segoe UI;fontSize=20;fontStyle=1;align=left;verticalAlign=top;fontColor=#0f766e;" vertex="1" parent="1">
+          <mxGeometry x="440" y="770" width="1580" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="node-20" value="&lt;b&gt;S3 Raw&lt;/b&gt;&lt;br/&gt;raw JSON&lt;br/&gt;offsets" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#0f766e;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="500" y="835" width="210" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="node-21" value="&lt;b&gt;Aurora PostgreSQL&lt;/b&gt;&lt;br/&gt;events/raw/core" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#0f766e;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="785" y="835" width="230" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="node-22" value="&lt;b&gt;Snapshots&lt;/b&gt;&lt;br/&gt;daily_snapshot" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#2563ad;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="835" width="210" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="node-23" value="&lt;b&gt;Last Status&lt;/b&gt;&lt;br/&gt;reserva unica" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#b42318;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="1375" y="835" width="210" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="node-24" value="&lt;b&gt;Pickups&lt;/b&gt;&lt;br/&gt;1/3/7/15" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#6d5bd0;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="1660" y="835" width="210" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="container-25" value="Soporte" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;spacing=12;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=3;fontFamily=Segoe UI;fontSize=20;fontStyle=1;align=left;verticalAlign=top;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="440" y="1100" width="1580" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="node-26" value="&lt;b&gt;Secrets Manager&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#6d5bd0;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1165" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="node-27" value="&lt;b&gt;IAM + KMS&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#6d5bd0;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="785" y="1165" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="node-28" value="&lt;b&gt;CloudWatch&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#b42318;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="1165" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="node-29" value="&lt;b&gt;EventBridge&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#d97706;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="1355" y="1165" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="node-30" value="&lt;b&gt;ECR&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#d97706;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="1640" y="1165" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-31" value="1 WS" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6d5bd0;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-6" target="node-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-32" value="2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d97706;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-14" target="node-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-33" value="3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d97706;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-15" target="node-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-34" value="redrive" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#b42318;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-15" target="node-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-35" value="OHIP REST" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6d5bd0;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-16" target="node-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-36" value="4 raw" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0f766e;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-16" target="node-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-37" value="5 upsert" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0f766e;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-16" target="node-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-38" value="6 schedule" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d97706;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-29" target="node-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-39" value="lee core" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0f766e;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-18" target="node-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-40" value="7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563ad;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-18" target="node-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-41" value="8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#b42318;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-22" target="node-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-42" value="9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6d5bd0;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-22" target="node-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-43" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-26" target="node-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-27" target="node-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-45" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-28" target="node-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-30" target="node-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page-44" name="Codigo Infra OHIP Storage">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2100" pageHeight="1300" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="text-2" value="Flujo codigo fuente -&gt; infraestructura -&gt; OHIP y almacenamiento" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Segoe UI;fontSize=26;fontStyle=1;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="2020" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="text-3" value="Modulos Python ejecutados en ECS y persistencia en S3/Aurora" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Segoe UI;fontSize=14;fontStyle=0;fontColor=#5f6b7a;" vertex="1" parent="1">
+          <mxGeometry x="42" y="82" width="2016" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="container-4" value="Codigo fuente Python" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;spacing=12;fillColor=#eef2ff;strokeColor=#6d5bd0;strokeWidth=3;fontFamily=Segoe UI;fontSize=20;fontStyle=1;align=left;verticalAlign=top;fontColor=#6d5bd0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="160" width="520" height="880" as="geometry" />
+        </mxCell>
+        <mxCell id="node-5" value="&lt;b&gt;listener.py&lt;/b&gt;&lt;br/&gt;graphql.py&lt;br/&gt;oauth.py&lt;br/&gt;offsets.py" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#6d5bd0;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="80" y="250" width="430" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="node-6" value="&lt;b&gt;sqs.py + events.py&lt;/b&gt;&lt;br/&gt;publicacion FIFO" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#6d5bd0;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="80" y="360" width="430" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="node-7" value="&lt;b&gt;event_enricher.py&lt;/b&gt;&lt;br/&gt;router + resolver" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#6d5bd0;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="80" y="470" width="430" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="node-8" value="&lt;b&gt;ohip_client.py + oauth.py&lt;/b&gt;&lt;br/&gt;REST Property APIs" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#6d5bd0;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="80" y="580" width="430" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="node-9" value="&lt;b&gt;raw_store.py + repositories.py&lt;/b&gt;&lt;br/&gt;S3 + PostgreSQL" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#6d5bd0;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="80" y="690" width="430" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="node-10" value="&lt;b&gt;analytics_snapshot.py&lt;/b&gt;&lt;br/&gt;snapshots&lt;br/&gt;pickups&lt;br/&gt;last status" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#6d5bd0;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="80" y="800" width="430" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="container-11" value="Infraestructura AWS" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;spacing=12;fillColor=#edf7f4;strokeColor=#168064;strokeWidth=3;fontFamily=Segoe UI;fontSize=20;fontStyle=1;align=left;verticalAlign=top;fontColor=#168064;" vertex="1" parent="1">
+          <mxGeometry x="650" y="160" width="610" height="880" as="geometry" />
+        </mxCell>
+        <mxCell id="node-12" value="&lt;b&gt;ECS Listener&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#168064;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="700" y="250" width="210" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="node-13" value="&lt;b&gt;SQS FIFO&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#d97706;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="980" y="250" width="210" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="node-14" value="&lt;b&gt;ECS Enricher&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#168064;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="700" y="470" width="210" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="node-15" value="&lt;b&gt;SQS DLQ&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#b42318;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="980" y="470" width="210" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="node-16" value="&lt;b&gt;ECS Analytics Task&lt;/b&gt;&lt;br/&gt;EventBridge" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#168064;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="700" y="800" width="250" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="node-17" value="&lt;b&gt;Secrets / IAM / KMS&lt;/b&gt;&lt;br/&gt;CloudWatch / ECR" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="700" y="915" width="490" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="container-18" value="OHIP y almacenamiento" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;spacing=12;fillColor=#fff7ed;strokeColor=#0f766e;strokeWidth=3;fontFamily=Segoe UI;fontSize=20;fontStyle=1;align=left;verticalAlign=top;fontColor=#0f766e;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="160" width="670" height="880" as="geometry" />
+        </mxCell>
+        <mxCell id="node-19" value="&lt;b&gt;OHIP Streaming API&lt;/b&gt;&lt;br/&gt;WebSocket GraphQL" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#6d5bd0;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="250" width="540" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="node-20" value="&lt;b&gt;OHIP Property APIs&lt;/b&gt;&lt;br/&gt;Reservation / Profile / Cashiering" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#6d5bd0;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="430" width="540" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="node-21" value="&lt;b&gt;S3 Raw Bucket&lt;/b&gt;&lt;br/&gt;raw JSON&lt;br/&gt;resource snapshots&lt;br/&gt;offsets" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#0f766e;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="625" width="540" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="node-22" value="&lt;b&gt;Aurora PostgreSQL&lt;/b&gt;&lt;br/&gt;opera_events&lt;br/&gt;opera_raw&lt;br/&gt;opera_core&lt;br/&gt;opera_analytics" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#0f766e;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="780" width="540" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="node-23" value="&lt;b&gt;BI / SQL&lt;/b&gt;&lt;br/&gt;dashboards y analistas" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;spacing=10;fillColor=#ffffff;strokeColor=#2563ad;strokeWidth=2;fontFamily=Segoe UI;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="940" width="540" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-5" target="node-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-6" target="node-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-7" target="node-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-10" target="node-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-28" value="1 business events" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6d5bd0;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-19" target="node-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-29" value="2 SendMessage" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d97706;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-12" target="node-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-30" value="3 Receive" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d97706;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-13" target="node-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-31" value="redrive" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#b42318;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-13" target="node-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-32" value="4 GET detail" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6d5bd0;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-14" target="node-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6d5bd0;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-8" target="node-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-34" value="5 put raw" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0f766e;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-9" target="node-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-35" value="6 upsert" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0f766e;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-9" target="node-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0f766e;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-14" target="node-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0f766e;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-14" target="node-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-38" value="7 analytics" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563ad;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-16" target="node-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-39" value="8 reporting" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563ad;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-22" target="node-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-17" target="node-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-17" target="node-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=11;fontColor=#172033;labelBackgroundColor=#f7f8fb;" edge="1" parent="1" source="node-17" target="node-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

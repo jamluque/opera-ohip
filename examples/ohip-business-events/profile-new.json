@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "offset": "100004",
+    "uniqueEventId": "evt-profile-new-100004"
+  },
+  "chainCode": "CHAIN",
+  "hotelId": "MAD01",
+  "moduleName": "Profile",
+  "eventName": "NewProfile",
+  "primaryKey": "profile-20001",
+  "timestamp": "2026-08-17T12:30:00Z",
+  "publisherId": "OPERA",
+  "actionInstanceId": "act-profile-new-20001",
+  "detail": [
+    {
+      "elementName": "profileId",
+      "newValue": "profile-20001",
+      "elementType": "TEXT",
+      "elementRole": "IDENTIFIER",
+      "elementSequence": 1
+    },
+    {
+      "elementName": "profileType",
+      "newValue": "GUEST",
+      "elementType": "TEXT",
+      "elementRole": "CLASSIFICATION",
+      "elementSequence": 2
+    }
+  ]
+}

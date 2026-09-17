@@ -1,0 +1,28 @@
+.venv/
+.python-packages/
+.tools/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.env
+*.pyc
+*.egg-info/
+dist/
+build/
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform/*.tfvars
+terraform/.terraform.lock.hcl
+
+# Windows download metadata (NTFS alternate data streams)
+*:Zone.Identifier
+
+# MemPalace per-project files (issue #185)
+mempalace.yaml
+entities.json
+
+# OHIP Postman collections — Oracle reference material, kept local only
+docs/ohip/postman/

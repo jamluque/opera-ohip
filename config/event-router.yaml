@@ -1,0 +1,54 @@
+routes:
+  - moduleName: Reservation
+    eventName: '*'
+    resource_type: reservation
+    operation_id: getReservation
+    method: GET
+    path: /rsv/v1/hotels/{hotelId}/reservations/{reservationId}
+    identifier_type: reservationId
+    fetch: reservation
+
+  - moduleName: Profile
+    eventName: '*'
+    resource_type: profile
+    operation_id: getProfile
+    method: GET
+    path: /crm/v1/profiles/{profileId}
+    identifier_type: profileId
+    fetch: profile
+
+  - moduleName: Cashiering
+    eventName: Folio
+    resource_type: folio
+    operation_id: getFolio
+    method: GET
+    path: /csh/v1/hotels/{hotelId}/reservations/{reservationId}/folios
+    identifier_type: reservationId
+    fetch: folios
+
+  - moduleName: Cashiering
+    eventName: Transaction
+    resource_type: folio_transaction
+    operation_id: getFolioTransactionDetails
+    method: GET
+    path: /csh/v1/hotels/{hotelId}/transactionDetails?transactionNo={transactionNo}
+    identifier_type: transactionNo
+    fetch: transaction_details
+
+aliases:
+  moduleName:
+    RSV: Reservation
+    RESERVATION: Reservation
+    CRM: Profile
+    PROFILE: Profile
+    CSH: Cashiering
+    CASHIERING: Cashiering
+  eventName:
+    FolioTransaction: Transaction
+    TransactionDetails: Transaction
+
+enrichment:
+  reservation:
+    fetch_reservation: true
+    fetch_related_profiles: false
+    fetch_folios: false

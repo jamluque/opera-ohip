@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "offset": "100006",
+    "uniqueEventId": "evt-cashiering-transaction-100006"
+  },
+  "chainCode": "CHAIN",
+  "hotelId": "MAD01",
+  "moduleName": "Cashiering",
+  "eventName": "Transaction",
+  "primaryKey": "900001",
+  "timestamp": "2026-08-17T14:10:00Z",
+  "publisherId": "OPERA",
+  "actionInstanceId": "act-transaction-900001",
+  "detail": [
+    {
+      "elementName": "transactionNo",
+      "newValue": "900001",
+      "elementType": "NUMBER",
+      "elementRole": "IDENTIFIER",
+      "elementSequence": 1
+    },
+    {
+      "elementName": "reservationId",
+      "newValue": "resv-10001",
+      "elementType": "TEXT",
+      "elementRole": "REFERENCE",
+      "elementSequence": 2
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "batches": {
+    "avg_size": 51.02,
+    "count": 196,
+    "max_size": 100,
+    "min_size": 1
+  },
+  "input": {
+    "max_batch_size": 100,
+    "max_seconds": 5,
+    "min_batch_size": 1,
+    "min_seconds": 1,
+    "realtime": true,
+    "seed": 42,
+    "total_messages": 10000
+  },
+  "pipeline": {
+    "fetch_ohip_rest": {
+      "avg_ms": 0.000659,
+      "count": 10000,
+      "max_ms": 0.020952,
+      "p50_ms": 0.000543,
+      "p95_ms": 0.001238,
+      "p99_ms": 0.002984,
+      "total_ms": 6.594
+    },
+    "parse_event": {
+      "avg_ms": 0.01096,
+      "count": 10000,
+      "max_ms": 0.297744,
+      "p50_ms": 0.008909,
+      "p95_ms": 0.020289,
+      "p99_ms": 0.052705,
+      "total_ms": 109.602
+    },
+    "resolve_identifier": {
+      "avg_ms": 0.001396,
+      "count": 10000,
+      "max_ms": 0.081261,
+      "p50_ms": 0.001066,
+      "p95_ms": 0.002606,
+      "p99_ms": 0.007793,
+      "total_ms": 13.961
+    },
+    "route_event": {
+      "avg_ms": 0.001088,
+      "count": 10000,
+      "max_ms": 0.125284,
+      "p50_ms": 0.000794,
+      "p95_ms": 0.001984,
+      "p99_ms": 0.007472,
+      "total_ms": 10.884
+    },
+    "stream_extract": {
+      "avg_ms": 0.000499,
+      "count": 10000,
+      "max_ms": 0.04667,
+      "p50_ms": 0.000318,
+      "p95_ms": 0.000818,
+      "p99_ms": 0.006092,
+      "total_ms": 4.987
+    },
+    "transform_core": {
+      "avg_ms": 0.000782,
+      "count": 10000,
+      "max_ms": 0.067143,
+      "p50_ms": 0.000639,
+      "p95_ms": 0.001527,
+      "p99_ms": 0.002945,
+      "total_ms": 7.817
+    }
+  },
+  "summary": {
+    "elapsed_seconds": 3.581,
+    "generated_batches": 196,
+    "processed_messages": 10000,
+    "target_stream_seconds": 3.558,
+    "throughput_messages_per_second": 2792.39
+  }
+}

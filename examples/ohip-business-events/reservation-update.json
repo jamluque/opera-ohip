@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "offset": "100002",
+    "uniqueEventId": "evt-reservation-update-100002"
+  },
+  "chainCode": "CHAIN",
+  "hotelId": "MAD01",
+  "moduleName": "Reservation",
+  "eventName": "UpdateReservation",
+  "primaryKey": "resv-10001",
+  "timestamp": "2026-08-17T10:15:00Z",
+  "publisherId": "OPERA",
+  "actionInstanceId": "act-resv-update-10001",
+  "detail": [
+    {
+      "elementName": "reservationId",
+      "oldValue": "resv-10001",
+      "newValue": "resv-10001",
+      "elementType": "TEXT",
+      "elementRole": "IDENTIFIER",
+      "elementSequence": 1
+    },
+    {
+      "elementName": "arrivalDate",
+      "oldValue": "2026-09-01",
+      "newValue": "2026-09-02",
+      "elementType": "DATE",
+      "elementRole": "CHANGE",
+      "elementSequence": 2
+    }
+  ]
+}

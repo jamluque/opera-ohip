@@ -1,0 +1,577 @@
+{
+  "db/migrations/001_init.sql": {
+    "mtime": 1785767676.3299296,
+    "ast_hash": "fd7ac156e6fedc3e3f2be263fc20606a",
+    "semantic_hash": ""
+  },
+  "db/migrations/002_enrichment.sql": {
+    "mtime": 1785773160.6282105,
+    "ast_hash": "261cb2c71ba2d0c45813423857a4f6f6",
+    "semantic_hash": ""
+  },
+  "db/migrations/003_analytics_snapshots.sql": {
+    "mtime": 1785842609.8359869,
+    "ast_hash": "7ffed4dbae2ce292adef1640099d0906",
+    "semantic_hash": ""
+  },
+  "db/migrations/004_reservation_last_status.sql": {
+    "mtime": 1786445045.497063,
+    "ast_hash": "13583ecf628b0322d86d6ca4b4bfa260",
+    "semantic_hash": ""
+  },
+  "pyproject.toml": {
+    "mtime": 1787066035.4379303,
+    "ast_hash": "5fcce2b3f23758a57b84af2e684abce3",
+    "semantic_hash": ""
+  },
+  "scripts/init-local-aws.sh": {
+    "mtime": 1787082491.9068584,
+    "ast_hash": "2037007bc682f3112465a0de40f34d41",
+    "semantic_hash": ""
+  },
+  "scripts/render_drawio_diagrams.py": {
+    "mtime": 1786450539.721014,
+    "ast_hash": "5209dcb579008d06e32312564ef68c95",
+    "semantic_hash": ""
+  },
+  "scripts/render_infrastructure_flow_diagram.py": {
+    "mtime": 1786446304.1019466,
+    "ast_hash": "82b8133e7a2e5048156d5c14595f78ef",
+    "semantic_hash": ""
+  },
+  "scripts/render_last_status_diagrams.py": {
+    "mtime": 1786445962.549302,
+    "ast_hash": "86490d2b8006f9fe2ef21ef83b52c9d1",
+    "semantic_hash": ""
+  },
+  "scripts/render_sequence_drawio_diagrams.py": {
+    "mtime": 1786525139.514148,
+    "ast_hash": "d666ea2176615d984150c8df79692db1",
+    "semantic_hash": ""
+  },
+  "scripts/render_source_infra_storage_flow.py": {
+    "mtime": 1786446906.841149,
+    "ast_hash": "12c80cad57a9203d04fbf7b29523a012",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/__init__.py": {
+    "mtime": 1785766583.799041,
+    "ast_hash": "137b6b7ff2e4cbfc0562c79c8004febc",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/analytics_snapshot.py": {
+    "mtime": 1787309151.1867235,
+    "ast_hash": "e9760e41eaebf5f9a460233858a41568",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/cloudwatch_metrics.py": {
+    "mtime": 1785772904.0010707,
+    "ast_hash": "3ddbd20995db3de781adacd27e19250c",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/config.py": {
+    "mtime": 1786972521.8105052,
+    "ast_hash": "4652b474b3907736401909d7fa38dee7",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/consumer.py": {
+    "mtime": 1785767676.3160286,
+    "ast_hash": "5d038848f78a9ce9cf20ab804188bfc3",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/db.py": {
+    "mtime": 1785768224.0458708,
+    "ast_hash": "621694aad76adff3a80e735e2db1e535",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/enrichment_repositories.py": {
+    "mtime": 1785773770.2008343,
+    "ast_hash": "0f045fbbaaa4db5a8bae7fdd888d1b3e",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/enrichment_service.py": {
+    "mtime": 1785773588.8846636,
+    "ast_hash": "9d3fc216fae8ba1423429b31a174fb45",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/event_enricher.py": {
+    "mtime": 1785773574.1668224,
+    "ast_hash": "fd25227faa09a9c9078370af8ab8de25",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/event_router.py": {
+    "mtime": 1785773574.1668224,
+    "ast_hash": "46e4abec0def0bd7fda74bc21ee12680",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/events.py": {
+    "mtime": 1785768252.9094675,
+    "ast_hash": "d0b3096eba6b929d501b78a7975dc2a4",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/graphql.py": {
+    "mtime": 1786972543.0016992,
+    "ast_hash": "45b6774dcf8740e52b3d15256d1ebe26",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/health.py": {
+    "mtime": 1785766583.8331656,
+    "ast_hash": "fe0c91e8107c780d584335b91cb734f2",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/identifier_resolver.py": {
+    "mtime": 1785773588.8846636,
+    "ast_hash": "bbb1444f0100a1b14429f7a168a7804f",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/listener.py": {
+    "mtime": 1785768252.9234903,
+    "ast_hash": "461cdaeb752cf6e71c283aead4ab65d6",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/logging.py": {
+    "mtime": 1785766583.8138735,
+    "ast_hash": "dd5c282be764a1f4d24a82c848c780fd",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/metrics.py": {
+    "mtime": 1785773108.7132497,
+    "ast_hash": "6fad678cf932a146d87ae706a8b8731d",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/oauth.py": {
+    "mtime": 1785768252.9412577,
+    "ast_hash": "2c9b70a2627556659ffe2b3516f404c0",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/offsets.py": {
+    "mtime": 1785766723.817762,
+    "ast_hash": "c4d278b06abcc150298b387be7817558",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/ohip_client.py": {
+    "mtime": 1786972497.8521292,
+    "ast_hash": "41e9054f7446e2b1df540bb7ac47cb6c",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/opera_event_parser.py": {
+    "mtime": 1785773588.8846636,
+    "ast_hash": "dc3e8160f32ebc33776c637d143cebb8",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/raw_store.py": {
+    "mtime": 1785768252.9516442,
+    "ast_hash": "89db83cecd930a2bb94b090f4510727f",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/retry_classifier.py": {
+    "mtime": 1785772903.993309,
+    "ast_hash": "373382aa5fd0b15184cd92a7b3da2e5c",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/sqs.py": {
+    "mtime": 1785766723.797974,
+    "ast_hash": "edbca1ac232a491a9c79762d12c2f7cd",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/sqs_message_processor.py": {
+    "mtime": 1785773478.5156984,
+    "ast_hash": "1c0789086a0fb9990a7dd4b570062852",
+    "semantic_hash": ""
+  },
+  "src/ohip_bridge/transformers.py": {
+    "mtime": 1785773588.8797386,
+    "ast_hash": "f16f6378fada8242f079f7a69a83bf09",
+    "semantic_hash": ""
+  },
+  "terraform/analytics.tf": {
+    "mtime": 1785845530.9566858,
+    "ast_hash": "3705a288f0ae7a25ecf797900ac1212a",
+    "semantic_hash": ""
+  },
+  "terraform/database.tf": {
+    "mtime": 1785767676.379323,
+    "ast_hash": "f7bc695c29e6b21a3002cef6ca46daab",
+    "semantic_hash": ""
+  },
+  "terraform/ecr.tf": {
+    "mtime": 1785842831.8512332,
+    "ast_hash": "55de44ee61763ee00726a84422834446",
+    "semantic_hash": ""
+  },
+  "terraform/ecs.tf": {
+    "mtime": 1785773299.9460847,
+    "ast_hash": "4ac19a51bbb480b2494946b0a25f3736",
+    "semantic_hash": ""
+  },
+  "terraform/enricher_autoscaling.tf": {
+    "mtime": 1785773299.9500935,
+    "ast_hash": "116389240bb1d4bc87a590bfbf3de732",
+    "semantic_hash": ""
+  },
+  "terraform/iam.tf": {
+    "mtime": 1785773244.065621,
+    "ast_hash": "d49521caed208f6f85f397916bdfda4c",
+    "semantic_hash": ""
+  },
+  "terraform/locals.tf": {
+    "mtime": 1785767676.362789,
+    "ast_hash": "ba6ae5e7098d6d73445e316cab730065",
+    "semantic_hash": ""
+  },
+  "terraform/network.tf": {
+    "mtime": 1785767676.362789,
+    "ast_hash": "f75b41096dd3d27340c053062756b212",
+    "semantic_hash": ""
+  },
+  "terraform/outputs.tf": {
+    "mtime": 1785842831.8999674,
+    "ast_hash": "eef4a0282514bd3bf6f0b76ea08735e6",
+    "semantic_hash": ""
+  },
+  "terraform/providers.tf": {
+    "mtime": 1785767676.345813,
+    "ast_hash": "4ae85b6bd99f453df959ec46b3e29752",
+    "semantic_hash": ""
+  },
+  "terraform/storage.tf": {
+    "mtime": 1785767676.3739376,
+    "ast_hash": "774d0ba0179e52367d8e9a21e276682c",
+    "semantic_hash": ""
+  },
+  "terraform/variables.tf": {
+    "mtime": 1785842831.8195107,
+    "ast_hash": "6bbd6be1298d8d6c8f0b416b95df6f12",
+    "semantic_hash": ""
+  },
+  "terraform/versions.tf": {
+    "mtime": 1785767676.345813,
+    "ast_hash": "10c00e1e7317b322c590cce3b770548a",
+    "semantic_hash": ""
+  },
+  "tests/conftest.py": {
+    "mtime": 1785773370.6890008,
+    "ast_hash": "15e6d3e5f094cf5d9bcaf0eec94f8d5e",
+    "semantic_hash": ""
+  },
+  "tests/test_analytics_snapshot.py": {
+    "mtime": 1787309123.998845,
+    "ast_hash": "d844bd730000de26f0893480edd2fceb",
+    "semantic_hash": ""
+  },
+  "tests/test_consumer.py": {
+    "mtime": 1785767785.132373,
+    "ast_hash": "c4a5c7996eb1065c89c53f9c17b35c64",
+    "semantic_hash": ""
+  },
+  "tests/test_enrichment_router_resolver.py": {
+    "mtime": 1785773574.1718557,
+    "ast_hash": "74ed5193be73445421c396616439e813",
+    "semantic_hash": ""
+  },
+  "tests/test_events.py": {
+    "mtime": 1785767785.1200225,
+    "ast_hash": "c54b9169da6a0a87072cc5fc298b69eb",
+    "semantic_hash": ""
+  },
+  "tests/test_ohip_client.py": {
+    "mtime": 1786972488.2228794,
+    "ast_hash": "46483cf6357d701241d06cf9287a85a6",
+    "semantic_hash": ""
+  },
+  "tests/test_repositories_sql.py": {
+    "mtime": 1785773370.6819909,
+    "ast_hash": "54b367463f290f502d3cd72c39bea9fa",
+    "semantic_hash": ""
+  },
+  "tests/test_sqs.py": {
+    "mtime": 1785768224.0458708,
+    "ast_hash": "d0505c48e1725812796c0a038dcb7bca",
+    "semantic_hash": ""
+  },
+  "tests/test_sqs_message_processor.py": {
+    "mtime": 1785773647.032662,
+    "ast_hash": "11148edc01b144caaa1e18ffe6cdc9e7",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1787309924.0912664,
+    "ast_hash": "4e65b2a089bb64f7aa71e0cefce6f43a",
+    "semantic_hash": ""
+  },
+  "config/event-router.yaml": {
+    "mtime": 1785772903.95054,
+    "ast_hash": "67327cf6fda755db5602d05b2ccdd162",
+    "semantic_hash": ""
+  },
+  "docker-compose.yml": {
+    "mtime": 1787082491.8322682,
+    "ast_hash": "1530eb008853b3df917864dfbdbdc4ef",
+    "semantic_hash": ""
+  },
+  "docs/analytics-last-status.md": {
+    "mtime": 1786445230.8550632,
+    "ast_hash": "d49fa4b053824e77002fe3ef32d75357",
+    "semantic_hash": ""
+  },
+  "docs/analytics-pickups.md": {
+    "mtime": 1786445267.2200117,
+    "ast_hash": "9dde76b0c416da951f07a746ab7b112d",
+    "semantic_hash": ""
+  },
+  "docs/architecture-diagrams-last-status.md": {
+    "mtime": 1786445921.0777667,
+    "ast_hash": "5b6239f3492b4fbe9955434bf760373a",
+    "semantic_hash": ""
+  },
+  "docs/architecture-infrastructure-flows-detailed.md": {
+    "mtime": 1786973713.9914103,
+    "ast_hash": "b6d9e509a1965e4500e2a5eab7221270",
+    "semantic_hash": ""
+  },
+  "docs/ohip-setup.md": {
+    "mtime": 1786973714.2024877,
+    "ast_hash": "850c9f0a42391477d7f7ec94036bbd38",
+    "semantic_hash": ""
+  },
+  "docs/sequence-diagrams-updated.md": {
+    "mtime": 1786973713.8838599,
+    "ast_hash": "c91d361e774b7bbb70143cc3b474061f",
+    "semantic_hash": ""
+  },
+  "docs/source-infra-ohip-storage-flow.md": {
+    "mtime": 1786973714.0949593,
+    "ast_hash": "ee7a7ffddb8a9aa0ede1da78154de62f",
+    "semantic_hash": ""
+  },
+  "outputs/architecture-last-status-updated.jpg": {
+    "mtime": 1786445920.8043857,
+    "ast_hash": "c1574c3effdd44f757c098d04042453a",
+    "semantic_hash": ""
+  },
+  "outputs/architecture-last-status-updated.png": {
+    "mtime": 1786445920.7851255,
+    "ast_hash": "1ebd82883b1bd61b2d61e4ffa070bdf8",
+    "semantic_hash": ""
+  },
+  "outputs/flow-analytics-last-status.jpg": {
+    "mtime": 1786445921.0657883,
+    "ast_hash": "7f8e24a4e6082a50d2d64bf8b358ed80",
+    "semantic_hash": ""
+  },
+  "outputs/flow-analytics-last-status.png": {
+    "mtime": 1786445921.0657883,
+    "ast_hash": "54886198893964dc30424f18f9332c29",
+    "semantic_hash": ""
+  },
+  "outputs/functional-analytics-last-status.jpg": {
+    "mtime": 1786445920.93163,
+    "ast_hash": "3fd040a6a4272a08a2da9468e11c6a72",
+    "semantic_hash": ""
+  },
+  "outputs/functional-analytics-last-status.png": {
+    "mtime": 1786445920.916394,
+    "ast_hash": "ab0daf271aec52ff8e1fc5c0ae2f92b7",
+    "semantic_hash": ""
+  },
+  "outputs/infrastructure-flows-detailed-last-status.jpg": {
+    "mtime": 1786446304.8204525,
+    "ast_hash": "f56b2afbcc170198c1a34ac1171e1b03",
+    "semantic_hash": ""
+  },
+  "outputs/infrastructure-flows-detailed-last-status.png": {
+    "mtime": 1786446304.786643,
+    "ast_hash": "0f1cc6568554d59365eedba7f1df0fcf",
+    "semantic_hash": ""
+  },
+  "outputs/source-infra-ohip-storage-flow.jpg": {
+    "mtime": 1786446907.4418972,
+    "ast_hash": "7afb873dc3f939608d8758cd8b029289",
+    "semantic_hash": ""
+  },
+  "outputs/source-infra-ohip-storage-flow.png": {
+    "mtime": 1786446907.3915758,
+    "ast_hash": "a2069f521360253bd1ffa7f43aa875e7",
+    "semantic_hash": ""
+  },
+  ".codex/hooks.json": {
+    "mtime": 1786958121.8063388,
+    "ast_hash": "66c29801e134e5de55615475e6c707f9",
+    "semantic_hash": ""
+  },
+  ".github/copilot-instructions.md": {
+    "mtime": 1786958162.6909132,
+    "ast_hash": "ec2dc0dc7bef63488889f34de2f5584d",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1786958121.8023388,
+    "ast_hash": "6a47d64fcc136324ca395065a707ef76",
+    "semantic_hash": ""
+  },
+  "tests/test_graphql_streaming.py": {
+    "mtime": 1786972438.33343,
+    "ast_hash": "39d7f8c700af8ba4da2732b29ba23ba5",
+    "semantic_hash": ""
+  },
+  "docs/oracle-ohip-validation.md": {
+    "mtime": 1786972521.9275658,
+    "ast_hash": "063f80b9bcfdf9c4ab9d470e1bef5ebe",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/plans/2026-08-17-oracle-ohip-streaming-compliance.md": {
+    "mtime": 1786972420.8344707,
+    "ast_hash": "24030e7bb17e545c4902a542013a049c",
+    "semantic_hash": ""
+  },
+  "examples/ohip-business-events/cashiering-folio.json": {
+    "mtime": 1786981301.6169233,
+    "ast_hash": "17e2b0b2d7fcd4c7b5abd2cedd5041dc",
+    "semantic_hash": ""
+  },
+  "examples/ohip-business-events/cashiering-transaction.json": {
+    "mtime": 1786981301.7361684,
+    "ast_hash": "5c924a35bb0a21380d8ea849b77b049f",
+    "semantic_hash": ""
+  },
+  "examples/ohip-business-events/profile-new.json": {
+    "mtime": 1786981301.5096025,
+    "ast_hash": "727299be5367342d6cb11e58058c5ed0",
+    "semantic_hash": ""
+  },
+  "examples/ohip-business-events/reservation-cancel.json": {
+    "mtime": 1786981301.3863826,
+    "ast_hash": "cc8c38539efc0b50fd471a044365167f",
+    "semantic_hash": ""
+  },
+  "examples/ohip-business-events/reservation-new.json": {
+    "mtime": 1786981301.1280181,
+    "ast_hash": "b318afdb82162cae7ecefc236ee3d89d",
+    "semantic_hash": ""
+  },
+  "examples/ohip-business-events/reservation-update.json": {
+    "mtime": 1786981301.2472632,
+    "ast_hash": "8e02af67b7024218d9a963057b5f104f",
+    "semantic_hash": ""
+  },
+  "tests/test_business_event_examples.py": {
+    "mtime": 1786981238.3243206,
+    "ast_hash": "bc7186895f6d412ab028e0f81c1abd2a",
+    "semantic_hash": ""
+  },
+  "docs/ohip-business-event-examples.md": {
+    "mtime": 1786981301.8673382,
+    "ast_hash": "4e6e211b6d0107ec3154c655ea37d2ed",
+    "semantic_hash": ""
+  },
+  "examples/ohip-service-api-responses/get-folios-response.json": {
+    "mtime": 1787045662.3591323,
+    "ast_hash": "d1b9271d317ca3a200a68981e257ac9e",
+    "semantic_hash": ""
+  },
+  "examples/ohip-service-api-responses/get-profile-response.json": {
+    "mtime": 1787045662.2833023,
+    "ast_hash": "77a74a07872ff068cea399b6397863c7",
+    "semantic_hash": ""
+  },
+  "examples/ohip-service-api-responses/get-reservation-response.json": {
+    "mtime": 1787045662.2034812,
+    "ast_hash": "3dd63cbfa057f6bf5cf569e42d1d6e4f",
+    "semantic_hash": ""
+  },
+  "examples/ohip-service-api-responses/get-transaction-details-response.json": {
+    "mtime": 1787045662.4309711,
+    "ast_hash": "c2a470ac9b20aec29295978ea7a01ca0",
+    "semantic_hash": ""
+  },
+  "examples/ohip-service-api-responses/reservation-cancel-404-deleted-marker.json": {
+    "mtime": 1787045662.5028102,
+    "ast_hash": "ed50a788224e0c4da38fa502701d25bf",
+    "semantic_hash": ""
+  },
+  "tests/test_ohip_service_response_examples.py": {
+    "mtime": 1787045687.703018,
+    "ast_hash": "8ba7c2f25554d465462db20d1940219b",
+    "semantic_hash": ""
+  },
+  "docs/ohip-streaming-to-service-api-examples.md": {
+    "mtime": 1787045662.5826313,
+    "ast_hash": "968f7f938a8fb0af7b8095a11b3eeaa8",
+    "semantic_hash": ""
+  },
+  "tests/test_local_dev_tooling.py": {
+    "mtime": 1787082504.284776,
+    "ast_hash": "b5e9138ca88b0efd34feb80a87d73b0e",
+    "semantic_hash": ""
+  },
+  "outputs/streaming-load-10000-cpu-report.json": {
+    "mtime": 1787083385.2316644,
+    "ast_hash": "a93407cb1a916e8fde594f555fce3ce0",
+    "semantic_hash": ""
+  },
+  "outputs/streaming-load-10000-report.json": {
+    "mtime": 1787083374.916701,
+    "ast_hash": "ae8bd23f924250b4b208ee25cd68e1a3",
+    "semantic_hash": ""
+  },
+  "scripts/perf_streaming_load.py": {
+    "mtime": 1787083351.3072107,
+    "ast_hash": "40336b1109bf0a657bee83c4cf4c4c5e",
+    "semantic_hash": ""
+  },
+  "tests/test_streaming_load_performance.py": {
+    "mtime": 1787083223.2915199,
+    "ast_hash": "8231e376879ef465995170a143de97d2",
+    "semantic_hash": ""
+  },
+  "outputs/streaming-e2e-10000-report.json": {
+    "mtime": 1787225044.8983285,
+    "ast_hash": "ac63d71fbf20dd04d5d2bcac1551c79a",
+    "semantic_hash": ""
+  },
+  "outputs/streaming-e2e-20-report.json": {
+    "mtime": 1787224842.7358615,
+    "ast_hash": "7e8b0032bc081795fdc8bfedf8912a06",
+    "semantic_hash": ""
+  },
+  "scripts/perf_streaming_e2e.py": {
+    "mtime": 1787305103.275808,
+    "ast_hash": "638016a12248f901c34c21ac43a7fb41",
+    "semantic_hash": ""
+  },
+  "tests/test_streaming_e2e_performance.py": {
+    "mtime": 1787305052.7222521,
+    "ast_hash": "7215e178c47d891e5d90ee268d0d0f61",
+    "semantic_hash": ""
+  },
+  "outputs/streaming-e2e-optimized-1000-report.json": {
+    "mtime": 1787234775.6913533,
+    "ast_hash": "ac8b8a1240b2b1a64b0b398668371c79",
+    "semantic_hash": ""
+  },
+  "db/migrations/005_last_status_refresh_index.sql": {
+    "mtime": 1787308360.4783008,
+    "ast_hash": "b8d5409b53a1da6853962e277cc4312c",
+    "semantic_hash": ""
+  },
+  "outputs/streaming-e2e-concurrent-1000-report.json": {
+    "mtime": 1787305776.7853065,
+    "ast_hash": "0eaa5b51ec848be6065017ac202babe3",
+    "semantic_hash": ""
+  },
+  "outputs/streaming-e2e-concurrent-100000-report.json": {
+    "mtime": 1787309911.522076,
+    "ast_hash": "328054ffd19e3244cd571a8bde8af445",
+    "semantic_hash": ""
+  },
+  "outputs/streaming-e2e-concurrent-200000-report.json": {
+    "mtime": 1787311781.9671326,
+    "ast_hash": "13ef83cd6563866f20f0cf1e47ec8e86",
+    "semantic_hash": ""
+  },
+  "outputs/streaming-e2e-concurrent-200000-summary.md": {
+    "mtime": 1787311885.4239197,
+    "ast_hash": "4126bfd53fad2a8e1404b90ad5975e77",
+    "semantic_hash": ""
+  }
+}
