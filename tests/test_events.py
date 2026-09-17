@@ -1,6 +1,7 @@
-from datetime import UTC
+from datetime import UTC, datetime
 
 from ohip_bridge.events import parse_ohip_event, stable_json
+from ohip_bridge.opera_event_parser import OperaBusinessEvent
 
 
 def test_parse_ohip_event_extracts_identity_fields() -> None:
@@ -32,3 +33,29 @@ def test_parse_ohip_event_falls_back_to_hash_when_no_unique_id() -> None:
 
 def test_stable_json_is_deterministic() -> None:
     assert stable_json({"b": 2, "a": 1}) == stable_json({"a": 1, "b": 2})
+
+
+def _event(**kw):
+    base = dict(
+        unique_event_id="e", offset=None, primary_key=None,
+        module_name="Reservation", event_name="UpdateReservation",
+        hotel_id="H", chain_code="C", occurred_at=datetime.now(UTC),
+    )
+    base.update(kw)
+    return OperaBusinessEvent(**base)
+
+
+def test_cancel_detected_from_detail_status():
+    ev = _event(details=[{"elementName": "reservationStatus",
+                          "oldValue": "RESERVED", "newValue": "CANCELLED"}])
+    assert ev.is_delete_or_cancel is True
+
+
+def test_deletion_detected_when_all_new_values_empty():
+    ev = _event(details=[{"elementName": "x", "oldValue": "1", "newValue": ""}])
+    assert ev.is_delete_or_cancel is True
+
+
+def test_plain_update_not_flagged():
+    ev = _event(details=[{"elementName": "roomType", "oldValue": "A", "newValue": "B"}])
+    assert ev.is_delete_or_cancel is False
