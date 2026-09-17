@@ -66,17 +66,24 @@ class OHIPClient:
 
     async def get_reservation(self, hotel_id: str, reservation_id: str) -> OHIPResponse:
         payload = await self._request(
-            "GET", f"/rsv/v1/hotels/{hotel_id}/reservations/{reservation_id}", hotel_id
+            "GET", f"/rsv/v1/hotels/{hotel_id}/reservations/{reservation_id}", hotel_id,
+            params={"fetchInstructions": ["Reservation"]},
         )
         return OHIPResponse("getReservation", "reservation", reservation_id, payload, 200)
 
     async def get_profile(self, profile_id: str, hotel_id: str | None = None) -> OHIPResponse:
-        payload = await self._request("GET", f"/crm/v1/profiles/{profile_id}", hotel_id)
+        payload = await self._request(
+            "GET", f"/crm/v1/profiles/{profile_id}", hotel_id,
+            params={"fetchInstructions": ["Profile", "Communication"]},
+        )
         return OHIPResponse("getProfile", "profile", profile_id, payload, 200)
 
     async def get_folios(self, hotel_id: str, reservation_id: str) -> OHIPResponse:
         payload = await self._request(
-            "GET", f"/csh/v1/hotels/{hotel_id}/reservations/{reservation_id}/folios", hotel_id
+            "GET", f"/csh/v1/hotels/{hotel_id}/reservations/{reservation_id}/folios", hotel_id,
+            params={"fetchInstructions": [
+                "Postings", "Totalbalance", "Transactioncodes", "Windowbalances",
+            ]},
         )
         return OHIPResponse("getFolio", "folio", reservation_id, payload, 200)
 
@@ -85,7 +92,7 @@ class OHIPClient:
             "GET",
             f"/csh/v1/hotels/{hotel_id}/transactionDetails",
             hotel_id,
-            params={"transactionNo": transaction_no},
+            params={"transactionNo": transaction_no, "includeGenerates": "true"},
         )
         return OHIPResponse(
             "getFolioTransactionDetails", "folio_transaction", transaction_no, payload, 200
