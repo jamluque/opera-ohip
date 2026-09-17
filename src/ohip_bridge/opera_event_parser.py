@@ -24,8 +24,20 @@ class OperaBusinessEvent:
 
     @property
     def is_delete_or_cancel(self) -> bool:
-        text = f"{self.event_name or ''} {self.metadata.get('actionType') or ''}".upper()
-        return "DELETE" in text or "CANCEL" in text or "CANCELLED" in text
+        name = (self.event_name or "").upper()
+        if "DELETE" in name or "CANCEL" in name:
+            return True
+        # OHIP no expone actionType: la acción se infiere del detail.
+        if self.details and all(
+            (d.get("newValue") in (None, "")) for d in self.details
+        ):
+            return True  # borrado de recurso => todos los newValue vacíos
+        for d in self.details:
+            if "status" in str(d.get("elementName") or "").lower():
+                new = str(d.get("newValue") or "").upper().replace(" ", "_")
+                if new in {"CANCELLED", "CANCELED", "NO_SHOW"}:
+                    return True
+        return False
 
 
 class OperaEventParser:

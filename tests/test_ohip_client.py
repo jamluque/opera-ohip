@@ -95,3 +95,33 @@ async def test_404_is_reported_to_service_for_delete_cancel_decision() -> None:
 
     assert exc.value.status_code == 404
     await client.close()
+
+
+class _Recorder:
+    def __init__(self):
+        self.calls = []
+
+    async def request(self, method, url, headers=None, params=None):
+        self.calls.append((method, url, params))
+        return httpx.Response(200, json={"reservation": {}})
+
+
+@pytest.mark.asyncio
+async def test_get_reservation_sends_fetch_instructions():
+    rec = _Recorder()
+    client = OHIPClient(settings(), FakeTokenProvider(), http_client=rec)
+    await client.get_reservation("MAD01", "resv-1")
+    _, url, params = rec.calls[-1]
+    assert url.endswith("/rsv/v1/hotels/MAD01/reservations/resv-1")
+    assert params["fetchInstructions"] == ["Reservation"]
+
+
+@pytest.mark.asyncio
+async def test_get_folios_sends_fetch_instructions():
+    rec = _Recorder()
+    client = OHIPClient(settings(), FakeTokenProvider(), http_client=rec)
+    await client.get_folios("MAD01", "resv-1")
+    _, _, params = rec.calls[-1]
+    assert params["fetchInstructions"] == [
+        "Postings", "Totalbalance", "Transactioncodes", "Windowbalances",
+    ]

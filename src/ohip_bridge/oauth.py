@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 import base64
 import logging
 import time
@@ -27,14 +28,17 @@ class OAuthClient:
     def __init__(self, settings: Settings) -> None:
         self.settings = settings
         self._token: OAuthToken | None = None
+        self._lock = asyncio.Lock()
 
     async def token(self) -> OAuthToken:
-        if self._token and not self._token.is_expiring(
-            self.settings.ohip_token_refresh_skew_seconds
-        ):
+        skew = self.settings.ohip_token_refresh_skew_seconds
+        if self._token and not self._token.is_expiring(skew):
             return self._token
-        self._token = await self._fetch_token()
-        return self._token
+        async with self._lock:
+            if self._token and not self._token.is_expiring(skew):
+                return self._token
+            self._token = await self._fetch_token()
+            return self._token
 
     async def _fetch_token(self) -> OAuthToken:
         client_id = self.settings.ohip_client_id.get_secret_value()
@@ -43,7 +47,6 @@ class OAuthClient:
         headers = {
             "Authorization": f"Basic {credentials}",
             "x-app-key": self.settings.ohip_application_key.get_secret_value(),
-            "x-hotelid": self.settings.ohip_hotel_ids[0],
             "Content-Type": "application/x-www-form-urlencoded",
         }
         data = {
