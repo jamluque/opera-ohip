@@ -4,8 +4,8 @@ import logging
 from dataclasses import dataclass
 from typing import Any
 
-import psycopg
 from psycopg.rows import dict_row
+from psycopg_pool import ConnectionPool
 
 from ohip_bridge import metrics
 from ohip_bridge.config import Settings
@@ -58,6 +58,13 @@ class OperaEnrichmentService:
         self.reservation_transformer = ReservationTransformer()
         self.profile_transformer = ProfileTransformer()
         self.folio_transformer = FolioTransformer()
+        self._pool = ConnectionPool(
+            self.settings.database_url.get_secret_value(),
+            min_size=1,
+            max_size=self.settings.enricher_pool_max_size,
+            kwargs={"row_factory": dict_row},
+            open=False,
+        )
 
     async def enrich(self, event: OperaBusinessEvent) -> EnrichmentResult:
         route = self.router.route_for(event)
@@ -99,8 +106,8 @@ class OperaEnrichmentService:
             return await self.ohip_client.get_transaction_details(event.hotel_id, identifier)
         raise EnrichmentPoisonError(f"Unsupported operation_id={operation_id}")
 
-    def _connect(self) -> psycopg.Connection[Any]:
-        return psycopg.connect(self.settings.database_url.get_secret_value(), row_factory=dict_row)
+    def _conn(self):
+        return self._pool.connection()
 
     def _persist(
         self,
@@ -109,7 +116,7 @@ class OperaEnrichmentService:
         resource_id: str,
         response: OHIPResponse,
     ) -> EnrichmentResult:
-        with self._connect() as conn:
+        with self._conn() as conn:
             try:
                 with conn.cursor() as cur:
                     status = self.event_repository.register_event(cur, event)
@@ -137,7 +144,7 @@ class OperaEnrichmentService:
     def _mark_deleted(
         self, event: OperaBusinessEvent, resource_type: str, resource_id: str
     ) -> EnrichmentResult:
-        with self._connect() as conn:
+        with self._conn() as conn:
             with conn.cursor() as cur:
                 status = self.event_repository.register_event(cur, event)
                 if status == "COMPLETED":
@@ -157,7 +164,7 @@ class OperaEnrichmentService:
         return EnrichmentResult(event.unique_event_id, "COMPLETED", deleted=True)
 
     def mark_failed(self, event: OperaBusinessEvent, status: str, error_message: str) -> None:
-        with self._connect() as conn:
+        with self._conn() as conn:
             with conn.cursor() as cur:
                 self.event_repository.register_event(cur, event)
                 self.event_repository.mark_failed(cur, event.unique_event_id, status, error_message)

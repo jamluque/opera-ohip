@@ -36,10 +36,12 @@ async def run() -> None:
     )
     processor = SQSMessageProcessor(settings, SqsConsumer(settings), OperaEventParser(), service)
     health_state.set_ready(True, component="event-enricher")
+    service._pool.open()
     try:
         await processor.run_forever()
     finally:
         await ohip_client.close()
+        service._pool.close()
 
 
 def main() -> None:
