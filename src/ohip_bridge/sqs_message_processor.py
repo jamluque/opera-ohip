@@ -72,9 +72,23 @@ class SQSMessageProcessor:
             if not messages:
                 await asyncio.sleep(self.settings.consumer_idle_sleep_seconds)
                 continue
+            await self._process_batch(messages)
+
+    async def _process_batch(self, messages: list[dict[str, Any]]) -> None:
+        groups: dict[str, list[dict[str, Any]]] = {}
+        for message in messages:
+            gid = message.get("Attributes", {}).get("MessageGroupId", "")
+            groups.setdefault(gid, []).append(message)
+        sem = asyncio.Semaphore(self.settings.enricher_concurrency)
+        await asyncio.gather(*(self._process_group(msgs, sem) for msgs in groups.values()))
+
+    async def _process_group(self, messages: list[dict[str, Any]], sem: asyncio.Semaphore) -> None:
+        async with sem:
             for message in messages:
                 with metrics.enrichment_seconds.time():
-                    await self.process_message(message)
+                    deleted = await self.process_message(message)
+                if not deleted:
+                    break  # preserva el orden FIFO del grupo; el resto se reentrega
 
     def _metric(self, name: str, value: float = 1, unit: str = "Count") -> None:
         if self.cloudwatch:

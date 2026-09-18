@@ -33,7 +33,7 @@ class SqsPublisher:
         self.client.send_message(
             QueueUrl=self.settings.sqs_events_queue_url,
             MessageBody=body,
-            MessageGroupId=self.settings.sqs_message_group_id,
+            MessageGroupId=event.hotel_id or self.settings.sqs_message_group_id,
             MessageDeduplicationId=event.fifo_deduplication_id,
             MessageAttributes={
                 "hotel_id": {"DataType": "String", "StringValue": event.hotel_id},
