@@ -65,6 +65,7 @@ class ReservationSnapshotRow:
     source_updated_at: datetime | None
     last_event_id: str | None
     last_event_at: datetime | None
+    deleted_at: datetime | None
     payload: dict[str, Any] | None
 
 
@@ -122,6 +123,7 @@ class ReservationSnapshotTransformer:
             source_updated_at=row.get("source_updated_at"),
             last_event_id=row.get("last_event_id"),
             last_event_at=row.get("last_event_at"),
+            deleted_at=row.get("deleted_at"),
             payload=payload,
         )
 
@@ -267,7 +269,8 @@ class AnalyticsSnapshotJob:
                     source_code,
                     channel_code,
                     source_updated_at,
-                    payload
+                    payload,
+                    deleted_at
                 )
                 SELECT
                     status.snapshot_date,
@@ -276,7 +279,8 @@ class AnalyticsSnapshotJob:
                     status.confirmation_no,
                     status.arrival_date,
                     status.departure_date,
-                    status.reservation_status,
+                    CASE WHEN status.deleted_at IS NOT NULL THEN 'DELETED'
+                         ELSE status.reservation_status END,
                     status.last_status_event_at,
                     status.last_event_id,
                     status.room_type,
@@ -285,7 +289,8 @@ class AnalyticsSnapshotJob:
                     status.source_code,
                     status.channel_code,
                     status.source_updated_at,
-                    status.payload
+                    status.payload,
+                    status.deleted_at
                 FROM (
                     SELECT
                         snapshot_date,
@@ -300,6 +305,7 @@ class AnalyticsSnapshotJob:
                         source_code,
                         channel_code,
                         payload,
+                        deleted_at,
                         MIN(stay_date) OVER reservation_window AS arrival_date,
                         (MAX(stay_date) OVER reservation_window + INTERVAL '1 day')::date
                             AS departure_date,
@@ -330,7 +336,8 @@ class AnalyticsSnapshotJob:
                     source_code = EXCLUDED.source_code,
                     channel_code = EXCLUDED.channel_code,
                     source_updated_at = EXCLUDED.source_updated_at,
-                    payload = EXCLUDED.payload
+                    payload = EXCLUDED.payload,
+                    deleted_at = EXCLUDED.deleted_at
                 """,
                 (snapshot_date,),
             )
@@ -344,11 +351,11 @@ class AnalyticsSnapshotJob:
                 room_type, rate_code, market_code, source_code, channel_code,
                 reservation_status, rooms, room_revenue, total_revenue, adr,
                 created_date, cancelled_date, source_updated_at, last_event_id,
-                last_event_at, payload
+                last_event_at, deleted_at, payload
             )
             VALUES (
                 %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
-                %s, %s, %s, %s, %s, %s::jsonb
+                %s, %s, %s, %s, %s, %s, %s::jsonb
             )
             ON CONFLICT (snapshot_date, hotel_id, stay_date, reservation_id) DO UPDATE SET
                 confirmation_no = EXCLUDED.confirmation_no,
@@ -362,6 +369,7 @@ class AnalyticsSnapshotJob:
                 room_revenue = EXCLUDED.room_revenue,
                 total_revenue = EXCLUDED.total_revenue,
                 adr = EXCLUDED.adr,
+                deleted_at = EXCLUDED.deleted_at,
                 payload = EXCLUDED.payload
             """,
             (
@@ -385,6 +393,7 @@ class AnalyticsSnapshotJob:
                 row.source_updated_at,
                 row.last_event_id,
                 row.last_event_at,
+                row.deleted_at,
                 stable_json(row.payload or {}),
             ),
         )
@@ -437,7 +446,13 @@ class AnalyticsSnapshotJob:
                      AND old.reservation_id = today.reservation_id
                      AND old.stay_date = today.stay_date
                      AND old.snapshot_date = today.snapshot_date - (%s || ' days')::interval
+                     AND old.deleted_at IS NULL
+                     AND (old.reservation_status IS NULL
+                          OR old.reservation_status NOT IN ('CANCELLED', 'NO_SHOW'))
                     WHERE today.snapshot_date = %s
+                      AND today.deleted_at IS NULL
+                      AND (today.reservation_status IS NULL
+                           OR today.reservation_status NOT IN ('CANCELLED', 'NO_SHOW'))
                     GROUP BY
                         today.snapshot_date,
                         today.hotel_id,
