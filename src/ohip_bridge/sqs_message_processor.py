@@ -80,7 +80,10 @@ class SQSMessageProcessor:
             gid = message.get("Attributes", {}).get("MessageGroupId", "")
             groups.setdefault(gid, []).append(message)
         sem = asyncio.Semaphore(self.settings.enricher_concurrency)
-        await asyncio.gather(*(self._process_group(msgs, sem) for msgs in groups.values()))
+        await asyncio.gather(
+            *(self._process_group(msgs, sem) for msgs in groups.values()),
+            return_exceptions=True,
+        )
 
     async def _process_group(self, messages: list[dict[str, Any]], sem: asyncio.Semaphore) -> None:
         async with sem:
