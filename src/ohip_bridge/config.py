@@ -54,6 +54,7 @@ class Settings(BaseSettings):
     enricher_router_config: str = "config/event-router.yaml"
     enricher_max_attempts: int = 5
     enricher_pool_max_size: int = 10
+    enricher_concurrency: int = 10
     sqs_enricher_dlq_url: str | None = None
     cloudwatch_metrics_namespace: str = "Opera/OHIP/Enrichment"
     cloudwatch_metrics_enabled: bool = True

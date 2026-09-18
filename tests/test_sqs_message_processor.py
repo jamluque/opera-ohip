@@ -36,6 +36,8 @@ class Settings:
     sqs_enricher_dlq_url = None
     sqs_visibility_timeout = 120
     enricher_max_attempts = 5
+    enricher_concurrency = 10
+    consumer_idle_sleep_seconds = 0
 
 
 @pytest.mark.asyncio
@@ -84,3 +86,46 @@ async def test_postgres_failure_before_delete_keeps_sqs_message() -> None:
 
     assert processed is False
     assert sqs.deleted == []
+
+
+@pytest.mark.asyncio
+async def test_process_batch_groups_and_stops_group_on_retry(monkeypatch) -> None:
+    processor = SQSMessageProcessor(Settings(), FakeSqs(), OperaEventParser(), FakeService())  # type: ignore[arg-type]
+    order = []
+    results = {"a2": False}  # a2 (grupo A) no se borra → corta el grupo A tras a2
+
+    async def fake_pm(message):
+        rh = message["ReceiptHandle"]
+        order.append(rh)
+        return results.get(rh, True)
+
+    monkeypatch.setattr(processor, "process_message", fake_pm)
+    messages = [
+        {"ReceiptHandle": "a1", "Attributes": {"MessageGroupId": "MAD01"}},
+        {"ReceiptHandle": "a2", "Attributes": {"MessageGroupId": "MAD01"}},
+        {"ReceiptHandle": "a3", "Attributes": {"MessageGroupId": "MAD01"}},
+        {"ReceiptHandle": "b1", "Attributes": {"MessageGroupId": "BCN01"}},
+    ]
+    await processor._process_batch(messages)
+    assert "a1" in order and "a2" in order  # grupo A procesa hasta el False
+    assert "a3" not in order  # corta el resto del grupo A
+    assert order.index("a1") < order.index("a2")  # orden dentro del grupo
+    assert "b1" in order  # el otro grupo sí se procesa
+
+
+@pytest.mark.asyncio
+async def test_process_batch_isolates_group_failures(monkeypatch) -> None:
+    processor = SQSMessageProcessor(Settings(), FakeSqs(), OperaEventParser(), FakeService())  # type: ignore[arg-type]
+    processed = []
+    async def fake_pm(message):
+        if message["Attributes"]["MessageGroupId"] == "MAD01":
+            raise RuntimeError("boom")
+        processed.append(message["ReceiptHandle"])
+        return True
+    monkeypatch.setattr(processor, "process_message", fake_pm)
+    messages = [
+        {"ReceiptHandle": "a1", "Attributes": {"MessageGroupId": "MAD01"}},
+        {"ReceiptHandle": "b1", "Attributes": {"MessageGroupId": "BCN01"}},
+    ]
+    await processor._process_batch(messages)  # must not raise
+    assert processed == ["b1"]
