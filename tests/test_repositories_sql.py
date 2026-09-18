@@ -47,6 +47,8 @@ def test_mark_resource_deleted_profile(sample_event) -> None:
     sql = "\n".join(cur.statements)
     assert "opera_core.profile" in sql
     assert "ON CONFLICT (profile_id)" in sql
+    assert "deleted_at = now()" in sql
+    assert "opera_core.profile.last_event_at <= EXCLUDED.last_event_at" in sql
 
 
 def test_mark_resource_deleted_folio_transaction(sample_event) -> None:
@@ -56,12 +58,20 @@ def test_mark_resource_deleted_folio_transaction(sample_event) -> None:
     sql = "\n".join(cur.statements)
     assert "opera_core.folio_transaction" in sql
     assert "ON CONFLICT (hotel_id, transaction_no)" in sql
+    assert "deleted_at = now()" in sql
+    assert "opera_core.folio_transaction.last_event_at <= EXCLUDED.last_event_at" in sql
 
 
 def test_mark_resource_deleted_folio_writes_nothing(sample_event) -> None:
     cur = FakeCursor()
     EventRepository().mark_resource_deleted(cur, "folio", "resv-1", sample_event)
 
+    assert cur.statements == []
+
+
+def test_mark_resource_deleted_unknown_type_writes_nothing(sample_event) -> None:
+    cur = FakeCursor()
+    EventRepository().mark_resource_deleted(cur, "widget", "x-1", sample_event)
     assert cur.statements == []
 
 
