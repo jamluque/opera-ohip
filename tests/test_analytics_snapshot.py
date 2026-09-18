@@ -1,5 +1,6 @@
-from datetime import date
+from datetime import UTC, date, datetime
 from decimal import Decimal
+from types import SimpleNamespace
 
 from ohip_bridge.analytics_snapshot import AnalyticsSnapshotJob, ReservationSnapshotTransformer
 
@@ -40,6 +41,22 @@ def test_reservation_snapshot_expands_stay_dates_and_extracts_payload_fields() -
     assert rows[0].rate_code == "BAR"
     assert rows[0].room_revenue == Decimal("100.00")
     assert rows[1].room_revenue == Decimal("120.00")
+
+
+def test_reservation_snapshot_carries_deleted_at() -> None:
+    deleted_at = datetime(2026, 8, 9, 12, 0, tzinfo=UTC)
+    row = {
+        "hotel_id": "MAD01",
+        "reservation_id": "resv-1",
+        "arrival_date": date(2026, 8, 10),
+        "departure_date": date(2026, 8, 11),
+        "deleted_at": deleted_at,
+        "raw_payload": {},
+    }
+
+    rows = ReservationSnapshotTransformer().transform(row, date(2026, 8, 9))
+
+    assert rows[0].deleted_at == deleted_at
 
 
 def test_reservation_snapshot_skips_past_stay_dates() -> None:
@@ -97,3 +114,28 @@ def test_last_status_refresh_materializes_one_row_per_reservation_without_status
     assert "NO_SHOW" not in executed_sql
     assert conn.cursor_instance.executions[1][1] == (date(2026, 8, 11),)
     assert conn.cursor_instance.executions[2][1] == (date(2026, 8, 11),)
+
+
+def test_last_status_refresh_marks_deleted_reservations() -> None:
+    conn = RecordingConnection()
+    job = AnalyticsSnapshotJob.__new__(AnalyticsSnapshotJob)
+
+    job._refresh_last_status(conn, date(2026, 8, 11))
+
+    executed_sql = "\n".join(sql for sql, _ in conn.cursor_instance.executions)
+    assert (
+        "CASE WHEN status.deleted_at IS NOT NULL THEN 'DELETED' ELSE status.reservation_status END"
+        in executed_sql
+    )
+
+
+def test_pickups_refresh_excludes_deleted_and_cancelled_no_show() -> None:
+    conn = RecordingConnection()
+    job = AnalyticsSnapshotJob.__new__(AnalyticsSnapshotJob)
+    job.settings = SimpleNamespace(analytics_pickup_days=[7])
+
+    job._refresh_pickups(conn, date(2026, 8, 11))
+
+    executed_sql = "\n".join(sql for sql, _ in conn.cursor_instance.executions)
+    assert "today.deleted_at IS NULL" in executed_sql
+    assert "NOT IN ('CANCELLED', 'NO_SHOW')" in executed_sql
