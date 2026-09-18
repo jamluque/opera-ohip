@@ -53,6 +53,72 @@ class EventRepository:
             (unique_event_id,),
         )
 
+    def mark_deleted(self, cur: Any, unique_event_id: str) -> None:
+        cur.execute(
+            """
+            UPDATE opera_events.event
+               SET status = 'DELETED', completed_at = now(), error_message = NULL
+             WHERE unique_event_id = %s
+            """,
+            (unique_event_id,),
+        )
+
+    def mark_resource_deleted(
+        self, cur: Any, resource_type: str, resource_id: str, event: OperaBusinessEvent
+    ) -> None:
+        if resource_type == "reservation":
+            cur.execute(
+                """
+                INSERT INTO opera_core.reservation (
+                    hotel_id, reservation_id, last_event_id, last_event_at, deleted_at
+                )
+                VALUES (%s, %s, %s, %s, now())
+                ON CONFLICT (hotel_id, reservation_id) DO UPDATE SET
+                    deleted_at = now(),
+                    last_event_id = EXCLUDED.last_event_id,
+                    last_event_at = EXCLUDED.last_event_at,
+                    updated_at = now()
+                WHERE opera_core.reservation.last_event_at IS NULL
+                   OR opera_core.reservation.last_event_at <= EXCLUDED.last_event_at
+                """,
+                (event.hotel_id, resource_id, event.unique_event_id, event.occurred_at),
+            )
+            return
+        if resource_type == "profile":
+            cur.execute(
+                """
+                INSERT INTO opera_core.profile (
+                    profile_id, last_event_id, last_event_at, deleted_at
+                )
+                VALUES (%s, %s, %s, now())
+                ON CONFLICT (profile_id) DO UPDATE SET
+                    deleted_at = now(), last_event_id = EXCLUDED.last_event_id,
+                    last_event_at = EXCLUDED.last_event_at, updated_at = now()
+                WHERE opera_core.profile.last_event_at IS NULL
+                   OR opera_core.profile.last_event_at <= EXCLUDED.last_event_at
+                """,
+                (resource_id, event.unique_event_id, event.occurred_at),
+            )
+            return
+        if resource_type == "folio_transaction":
+            cur.execute(
+                """
+                INSERT INTO opera_core.folio_transaction (
+                    hotel_id, transaction_no, last_event_id, last_event_at, deleted_at
+                )
+                VALUES (%s, %s, %s, %s, now())
+                ON CONFLICT (hotel_id, transaction_no) DO UPDATE SET
+                    deleted_at = now(), last_event_id = EXCLUDED.last_event_id,
+                    last_event_at = EXCLUDED.last_event_at, updated_at = now()
+                WHERE opera_core.folio_transaction.last_event_at IS NULL
+                   OR opera_core.folio_transaction.last_event_at <= EXCLUDED.last_event_at
+                """,
+                (event.hotel_id, resource_id, event.unique_event_id, event.occurred_at),
+            )
+            return
+        # folio (Option A: resource_id is a reservationId, can't identify the folio row) and
+        # any unknown resource_type: no-op, nothing written to opera_core.
+
     def mark_failed(self, cur: Any, unique_event_id: str, status: str, error_message: str) -> None:
         cur.execute(
             """
