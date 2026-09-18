@@ -159,9 +159,10 @@ class OperaEnrichmentService:
                     operation_id="deleted_marker",
                     payload={"deleted": True, "resource_id": resource_id},
                 )
-                self.event_repository.mark_completed(cur, event.unique_event_id)
+                self.event_repository.mark_resource_deleted(cur, resource_type, resource_id, event)
+                self.event_repository.mark_deleted(cur, event.unique_event_id)
             conn.commit()
-        return EnrichmentResult(event.unique_event_id, "COMPLETED", deleted=True)
+        return EnrichmentResult(event.unique_event_id, "DELETED", deleted=True)
 
     def mark_failed(self, event: OperaBusinessEvent, status: str, error_message: str) -> None:
         with self._conn() as conn:
